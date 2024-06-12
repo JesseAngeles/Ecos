@@ -1,70 +1,29 @@
 \documentclass[12pt,twoside]{article}
-\usepackage{amsmath, amssymb}
 \usepackage{amsmath}
 \usepackage[active]{srcltx}
 \usepackage{amssymb}
 \usepackage{amscd}
 \usepackage{makeidx}
 \usepackage{amsthm}
-\usepackage{algpseudocode}
 \usepackage{algorithm}
 \usepackage{amssymb, amsmath}
+\usepackage[utf8]{inputenc}
 \usepackage{fancyhdr}
 \usepackage{graphics}
-\usepackage{multirow}
-\usepackage{graphicx}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{enumitem}
-\usepackage{relsize}
-\usepackage{url}  % Para dar formato a las URLs
-\usepackage[spanish,es-tabla]{babel}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage[spanish]{babel}
-\usepackage{csquotes}
-\usepackage{tikz}
-\usetikzlibrary{snakes}
-\usepackage{rotating}
-
-% Define colores para el código
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-
-% Configuración del estilo de Java
-\lstdefinestyle{mystyle}{
-	backgroundcolor=\color{backcolour},   
-	commentstyle=\color{codegreen},
-	keywordstyle=\color{blue},
-	numberstyle=\tiny\color{codegray},
-	stringstyle=\color{codepurple},
-	basicstyle=\ttfamily\footnotesize,
-	breakatwhitespace=false,         
-	breaklines=true,                 
-	captionpos=b,                    
-	keepspaces=true,                 
-	numbers=left,                    
-	numbersep=5pt,                  
-	showspaces=false,                
-	showstringspaces=false,
-	showtabs=false,                  
-	tabsize=2
-}
-
-% Configura el estilo de Java
-\lstset{style=mystyle}
-
-%----------------------------------------------------------------------------------------------
 \usepackage{amsmath, amssymb}
 \usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
 \usepackage[active]{srcltx}
+\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amscd}
 \usepackage{makeidx}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{url}
+\usepackage{enumitem}
 
 \renewcommand{\baselinestretch}{1}
 \setcounter{page}{1}
@@ -75,7 +34,7 @@
 \pagestyle{myheadings}
 \thispagestyle{empty}
 \markboth{\small{TMP(Nombre de equipo)}}{\small{Formulación del Proyecto}}
-\date{}
+\date{} 
 
 \begin{document}
 	
@@ -146,21 +105,41 @@
 		
 	\section{Introducción}
 	
-	\section{Estado del arte} %Videjuegos y aplicaciones que simulen este comportamiento conversacional
+	\clearpage
+	\section{Estado del arte}%Videjuegos y aplicaciones que simulen este comportamiento conversacional
+	Algunos juegos y aplicaciones similares son:
+	\begin{enumerate}[noitemsep]
+		\item Videojuego \textit{Hades} desarrollado por Supergiant Games \cite{game:hades}. 
+
+		\item Videojuego \textit{Celeste} desarrollado por Maddy Makes Games \cite{game:celeste}
+
+		\item Videojuego \textit{Hollow Knight} desarrollado por Team Cherry \cite{game:hollow}
+		
+		\item Videojuego \textit{Coffee Talk} desarrollado por Toge Productions \cite{game: coffee}
+		
+		\item Aplicación \textit{character.ai} desarrollada por Character Technologies, Inc. \cite{app: character}
+	\end{enumerate}
 	
 	\begin{table}[H]
 		\centering
-		\begin{tabular}{|c|p{4cm}|c|}
+		\begin{tabular}{|c|p{9cm}|}
 			\hline
-			Producto & Características & Precio \\ \hline
-			 & &  \\ \hline
-			 & &  \\ \hline
-			 & &  \\ \hline
+			\textbf{Producto} & \multicolumn{1}{c|}{\textbf{Características}} \\ \hline
+			 Hades &  Juego \textit{rogue like}  con niveles generados proceduralmente conectando diferentes habitaciones.\\ \hline
+			 
+			 Celeste &  Juego de plataformas con jugabilidad invariable, conversación ocasional con NPC y mecanicas de movimiento avanzadas. \\ \hline
+			 
+			 Hollow knight &   Juego \textit{metroidvania} con poca interacción conversacional, mecanicas de movimiento y combate avanzada. \\ \hline
+			 
+			 Coffee talk &   Juego de genero novela visual y aventura conversacional, las respuestas (limitadas por el juego) definen las relaciones con los NPC. \\ \hline
+			 
+			 character.ai&   Aplicación online para diseñar o conversar con bots inteligentes y personificados unicamente mediante lineas de texto. \\ \hline
 		\end{tabular}
-		\caption{TMP(Resumen de productos similares)}
-		\label{tabla:estado_del_arte}
+		\caption{Resumen de juegos y aplicaciones similares}
+		\label{table:aplicaciones}
 	\end{table} 
 	
+	\clearpage
 	\section{Justificación}
 	
 	\section{Objetivo general}
@@ -212,7 +191,22 @@
 	\section{Referencias Bibliográficas}
 	
 	\begin{thebibliography}{10}
-		
+	
+	%Estado del arte
+	\bibitem{game:hades}
+	Supergiant Games, \textit{Hades}. Supergiant Games 2019.
+	
+	\bibitem{game:celeste}
+	Maddy Makes Games , \textit{Celeste}. Maddy Makes Games, 2018.
+	
+	\bibitem{game:hollow}
+	Team Cherry, \textit{Hollow Knight}, Team Cherry, 2017.
+	
+	\bibitem{game: coffee}
+	Toge Productions, \textit{Coffee Talk}, Toge Productions, 2020.
+	
+	\bibitem{app: character}
+	Character Technologies, Inc. ``character.ai'', 2022. [En línea]. Disponible: \url{https://character.ai}.  [Accedido: 11-Junio-2024].
 
 	\end{thebibliography}
 	
