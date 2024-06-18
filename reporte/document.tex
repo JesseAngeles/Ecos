@@ -24,6 +24,8 @@
 \usepackage{caption}
 \usepackage{url}
 \usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{tabularx}
 
 \renewcommand{\baselinestretch}{1}
 \setcounter{page}{1}
@@ -74,8 +76,8 @@
 	\centerline{}
 	\centerline{\bf {Angeles López Erick Jesse\footnote{eangelesl1700@alumno.ipn.mx}}}
 	\centerline{\bf {Corona Anchondo José Antonio\footnote{jcoronaa1900@alumno.ipn.mx}}}
-	\centerline{\bf {Esquivel García Thania Paola\footnote{tesquivelg2000@alumno.ipn.mx}}}
 	\centerline{\bf {	Espinosa Martínez José Carlos\footnote{jespinosam1900@alumno.ipn.mx}}}
+	\centerline{\bf {Esquivel García Thania Paola\footnote{tesquivelg2000@alumno.ipn.mx}}}
 	
 	
 	
@@ -338,10 +340,263 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 	\clearpage
 	\section{Diseño}
 	
+	\subsection{Diagrama de contexto}
+	
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=1\textwidth]{img/contexto.png}}
+		\caption{Diagrama de contexto}
+		\label{diagrama: contexto}
+	\end{figure}
+	
+	\subsection{Diagrama de flujo de datos}
+	
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=1\textwidth]{img/flujo_datos.png}}
+		\caption{Diagrama de flujo de datos}
+		\label{diagrama: flujo_datos}
+	\end{figure}
+	
 	\subsection{Diagrama de casos de uso}
 	
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=1\textwidth]{img/casos_de_uso1.png}}
+		\caption{Diagrama de casos de uso}
+		\label{diagrama: casos_de_uso1}
+	\end{figure}
 	
-	\subsubsection{Especificaciones}
+	\begin{figure}[h!]
+		\centering
+		\fbox{\includegraphics[width=.5\textwidth]{img/casos_de_uso2.png}}
+		\caption{Diagrama de casos de uso}
+		\label{diagrama: casos_de_uso2}
+	\end{figure}
+	
+	
+	
+	\subsubsection{Especificaciones de casos de uso}
+	
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=.75\textwidth]{img/casos/nueva_partida.png}}
+		\caption{Caso de uso:  Nueva partida}
+		\label{diagrama: caso: nueva_partida}
+	\end{figure}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+			\hline
+			\textbf{CASO DE USO} & \multicolumn{2}{|l|}{Nueva partida} \\ \hline
+			
+			\textbf{ACTOR} & \multicolumn{2}{|l|}{Jugador} \\ \hline
+			
+			\textbf{DESCRIPCIÓN} & \multicolumn{2}{|>{\raggedright\arraybackslash}X|}{El jugador inicia una nueva partida en un `slot' disponible.} \\ \hline
+		
+			\textbf{PRECONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
+			
+			\textbf{FLUJO BÁSICO} & \textbf{ACTOR} & \textbf{SISTEMA} \\ \hline
+			& 
+			1. Presiona el botón de `Nueva partida' en el menú principal. \newline
+			3. Selecciona un `slot' disponible.
+			& 
+			2. Muestra `slots' de almacenamiento. \newline
+			4. Crea datos de partida e inicia el juego.
+			\\ \hline
+			
+			\textbf{FLUJO ALTERNO} & \textbf{ACTOR} & \textbf{SISTEMA} \\ \hline
+			
+			1. Sin `slots' de almacenamiento: Cancelar.
+			& 
+			1. Presiona el botón de `Nueva partida' en el menú principal. \newline
+			3. Selecciona un `slot' no disponible. \newline
+			5. Selecciona la opción de cancelar.
+			&
+			2. Muestra `slots' de almacenamiento. \newline
+			4. Mensaje de advertencia para sobrescribir datos o cancelar. \newline
+			6. Regresa al menú principal.
+			\\ \hline
+			
+			\textbf{FLUJO ALTERNO} & \textbf{ACTOR} & \textbf{SISTEMA} \\ \hline
+			
+			2. Sin `slots' de almacenamiento: Cancelar.
+			& 
+			1. Presiona el botón de `Nueva partida' en el menú principal. \newline
+			3. Selecciona un `slot' no disponible. \newline
+			5. Selecciona la opción de sobrescribir.
+			&
+			2. Muestra `slots' de almacenamiento. \newline
+			4. Mensaje de advertencia para sobrescribir datos o cancelar. \newline
+			6. Borra datos de partida pasada, crea datos de partida e inicia el juego.
+			\\ \hline
+			
+			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
+		\end{tabularx}
+		\caption{Descripción del caso de uso: Nueva partida.}
+		\label{table:caso_nueva_partida}
+	\end{table}
+	
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=.75\textwidth]{img/casos/cargar_partida.png}}
+		\caption{Caso de uso: Cargar partida}
+		\label{diagrama: caso: cargar_partida}
+	\end{figure}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+			\hline
+			\textbf{CASO DE USO} & \multicolumn{2}{|l|}{Cargar partida} \\ \hline
+			
+			\textbf{ACTOR} & \multicolumn{2}{|l|}{Jugador} \\ \hline
+			
+			\textbf{DESCRIPCIÓN} & \multicolumn{2}{|>{\raggedright\arraybackslash}X|}{El jugador carga los datos de la partida guardada e inicia el juego.} \\ \hline
+			
+			\textbf{PRECONDICIÓN} & \multicolumn{2}{|l|}{Nueva partida} \\ \hline
+			
+			\textbf{FLUJO BÁSICO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			& 
+			1. Selecciona el `slot' de partida.
+			&
+			2. Carga datos de partida, e inicia el juego.
+			 \\ \hline
+			
+			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
+		\end{tabularx}
+		\caption{Descripción del caso de uso: Cargar partida }
+		\label{table: caso: cargar_partida}
+	\end{table}
+	
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=.75\textwidth]{img/casos/borrar_partida.png}}
+		\caption{Caso de uso: Borrar partida.}
+		\label{diagrama: caso: borrar_partida}
+	\end{figure}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+			\hline
+			\textbf{CASO DE USO} & \multicolumn{2}{|l|}{Borrar partida} \\ \hline
+			
+			\textbf{ACTOR} & \multicolumn{2}{|l|}{Jugador} \\ \hline
+			
+			\textbf{DESCRIPCIÓN} & \multicolumn{2}{|>{\raggedright\arraybackslash}X|}{El jugador elimina los datos guardados de una partida.} \\ \hline
+			
+			\textbf{PRECONDICIÓN} & \multicolumn{2}{|l|}{Nueva partida} \\ \hline
+			
+			\textbf{FLUJO BÁSICO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			& 
+			1. Selecciona el botón de eliminar `slot' de partida. \newline
+			3. Selecciona eliminar los datos.
+			&
+			2. Mensaje de advertencia para eliminar o cancelar. \newline
+			4. Elimina permanente los datos de partida del `slot'.
+			 \\ \hline
+			
+			\textbf{FLUJO ALTERNO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			
+			1. Cancelar.
+			& 
+			1. Selecciona el botón de eliminar `slot' de partida. \newline
+			3. Selecciona cancelar.
+			&
+			2. Mensaje de advertencia para eliminar o cancelar. \newline
+			4. Regresa al menú principal.
+			\\ \hline
+			
+			
+			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
+		\end{tabularx}
+		\caption{Descripción del caso de uso: Eliminar partida}
+		\label{table: caso: eliminar_partida}
+	\end{table}
+	
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=.75\textwidth]{img/casos/cambiar_controles.png}}
+		\caption{Caso de uso: Cambiar controles}
+		\label{diagrama: caso: cambiar_controles}
+	\end{figure}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+			\hline
+			\textbf{CASO DE USO} & \multicolumn{2}{|l|}{Cambiar controles} \\ \hline
+			
+			\textbf{ACTOR} & \multicolumn{2}{|l|}{Jugador} \\ \hline
+			
+			\textbf{DESCRIPCIÓN} & \multicolumn{2}{|>{\raggedright\arraybackslash}X|}{El jugador configura los controles para las acciones del personaje.} \\ \hline
+			
+			\textbf{PRECONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
+			
+			\textbf{FLUJO BÁSICO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			& 
+			1. Selecciona el menú de configuración. \newline
+			3. Selecciona el sub menú de controles. \newline
+			5. Selecciona una acción. \newline
+			7. Presiona un botón en el tiempo dado. \newline
+			&
+			2. Muestra configuración de audio y de controles. \newline
+			4. Muestra un listado de acciones y su botón/tecla asignada. \newline
+			6. Inicia un contador esperando respuesta del jugador. \newline 
+			8. Configura la acción al botón seleccionado. \newline
+			 \\ \hline
+			 
+			 \textbf{FLUJO ALTERNO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			 1. Omisión.
+			 & 
+			 1. Selecciona el menú de configuración. \newline
+			 3. Selecciona el sub menú de controles. \newline
+			 5. Selecciona una acción. \newline
+			 7. No presiona un botón en el tiempo dado. \newline
+			 &
+			 2. Muestra configuración de audio y de controles. \newline
+			 4. Muestra un listado de acciones y su botón/tecla asignada. \newline
+			 6. Inicia un contador esperando respuesta del jugador. \newline 
+			 8. Mantiene la configuración actual de la acción. \newline
+			 \\ \hline
+			
+			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
+		\end{tabularx}
+		\caption{Descripción del caso de uso: Cambiar controles}
+		\label{table: caso: cambiar_controles}
+	\end{table}
+	
+	\clearpage
+	\begin{figure}[H]
+		\centering
+		%	\fbox{\includegraphics[width=.75\textwidth]{img/casos/}}
+		\caption{Caso de uso: }
+		\label{diagrama: caso: }
+	\end{figure}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+			\hline
+			\textbf{CASO DE USO} & \multicolumn{2}{|l|}{} \\ \hline
+			
+			\textbf{ACTOR} & \multicolumn{2}{|l|}{} \\ \hline
+			
+			\textbf{DESCRIPCIÓN} & \multicolumn{2}{|>{\raggedright\arraybackslash}X|}{} \\ \hline
+			
+			\textbf{PRECONDICIÓN} & \multicolumn{2}{|l|}{} \\ \hline
+			
+			\textbf{FLUJO BÁSICO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			
+			& & \\ \hline
+			
+			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{} \\ \hline
+		\end{tabularx}
+		\caption{Descripción del caso de uso: }
+		\label{table: caso: }
+	\end{table}
 	
 	\subsection{Diagrama de clases}
 
