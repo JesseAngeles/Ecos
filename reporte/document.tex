@@ -376,7 +376,7 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 	
 	
 	
-	\subsubsection{Especificaciones de casos de uso}
+	\subsubsection{Especificaciones de casos de uso del jugador(personaje)}
 	
 	%Nueva partida
 	\begin{figure}[H]
@@ -605,12 +605,66 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 			
 			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
 		\end{tabularx}
-		\caption{Descripción del caso de uso: }
-		\label{table: caso: }
+		\caption{Descripción del caso de uso: Cambiar volumen}
+		\label{table: caso: cambiar_volumen}
 	\end{table}
 	
-	%
+	% Cambiar modo
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=.5\textwidth]{img/casos/cambiar_modo.png}}
+		\caption{Caso de uso: Cambiar modo}
+		\label{diagrama: caso: cambiar_modo}
+	\end{figure}
 	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+			\hline
+			\textbf{CASO DE USO} & \multicolumn{2}{|l|}{Cambiar modo} \\ \hline
+			
+			\textbf{ACTOR} & \multicolumn{2}{|l|}{Personaje (Jugador)} \\ \hline
+			
+			\textbf{DESCRIPCIÓN} & \multicolumn{2}{|>{\raggedright\arraybackslash}X|}{El personaje tiene un segundo intento después de morir y lo recupera cuando revive} \\ \hline
+			
+			\textbf{PRECONDICIÓN} & \multicolumn{2}{|l|}{Morir o Revivir} \\ \hline
+			
+			\textbf{FLUJO BÁSICO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			&
+			1. El personaje muere. \newline 
+			2. El personaje encuentra el lugar donde falleció. 
+			& 
+			2. El personaje reaparece con el ultimo NPC con el que interactuó (Sus estadísticas están determinadas por el flujo conversacional del NPC) en modo `Afterlife'. \newline
+			3. El personaje recupera sus estadísticas iniciales y continua el juego. 
+			\\ \hline
+			
+			\textbf{FLUJO ALTERNO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			1. El jugador fallece en modo `Afterlife'.
+			&
+			1. El personaje muere. \newline 
+			2. El personaje muere nuevamente. 
+			& 
+			2. El personaje reaparece con el ultimo NPC con el que interactuó en modo `Afterlife'. \newline
+			3. El personaje reaparece en el `respawn'.
+			\\ \hline
+			
+			\textbf{FLUJO ALTERNO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			1. El jugador no fallece en modo `Afterlife' y no encuentra donde falleció.
+			&
+			1. El personaje muere. \newline 
+			2. El personaje sigue jugando en modo `Afterlife'.
+			& 
+			2. El personaje reaparece con el ultimo NPC con el que interactuó en modo `Afterlife'. \newline
+			3. El personaje se mantiene en modo `Afterlife'.
+			\\ \hline
+			
+			
+			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{Revivir o Morir} \\ \hline
+		\end{tabularx}
+		\caption{Descripción del caso de uso: Cambiar modo}
+		\label{table: caso: cambiar_modo}
+	\end{table}
+
 	\clearpage
 	\begin{figure}[H]
 		\centering
