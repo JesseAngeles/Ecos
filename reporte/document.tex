@@ -378,6 +378,7 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 	
 	\subsubsection{Especificaciones de casos de uso}
 	
+	%Nueva partida
 	\begin{figure}[H]
 		\centering
 		\fbox{\includegraphics[width=.75\textwidth]{img/casos/nueva_partida.png}}
@@ -438,6 +439,7 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 		\label{table:caso_nueva_partida}
 	\end{table}
 	
+	%Cargar partida
 	\begin{figure}[H]
 		\centering
 		\fbox{\includegraphics[width=.75\textwidth]{img/casos/cargar_partida.png}}
@@ -470,6 +472,7 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 		\label{table: caso: cargar_partida}
 	\end{table}
 	
+	%Borrar partida
 	\begin{figure}[H]
 		\centering
 		\fbox{\includegraphics[width=.75\textwidth]{img/casos/borrar_partida.png}}
@@ -516,6 +519,7 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 		\label{table: caso: eliminar_partida}
 	\end{table}
 	
+	%Cambiar controles
 	\begin{figure}[H]
 		\centering
 		\fbox{\includegraphics[width=.75\textwidth]{img/casos/cambiar_controles.png}}
@@ -540,12 +544,12 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 			1. Selecciona el menú de configuración. \newline
 			3. Selecciona el sub menú de controles. \newline
 			5. Selecciona una acción. \newline
-			7. Presiona un botón en el tiempo dado. \newline
+			7. Presiona un botón en el tiempo dado. \
 			&
 			2. Muestra configuración de audio y de controles. \newline
 			4. Muestra un listado de acciones y su botón/tecla asignada. \newline
 			6. Inicia un contador esperando respuesta del jugador. \newline 
-			8. Configura la acción al botón seleccionado. \newline
+			8. Configura la acción al botón seleccionado. 
 			 \\ \hline
 			 
 			 \textbf{FLUJO ALTERNO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
@@ -554,12 +558,12 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 			 1. Selecciona el menú de configuración. \newline
 			 3. Selecciona el sub menú de controles. \newline
 			 5. Selecciona una acción. \newline
-			 7. No presiona un botón en el tiempo dado. \newline
+			 7. No presiona un botón en el tiempo dado. 
 			 &
 			 2. Muestra configuración de audio y de controles. \newline
 			 4. Muestra un listado de acciones y su botón/tecla asignada. \newline
 			 6. Inicia un contador esperando respuesta del jugador. \newline 
-			 8. Mantiene la configuración actual de la acción. \newline
+			 8. Mantiene la configuración actual de la acción. 
 			 \\ \hline
 			
 			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
@@ -567,6 +571,45 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 		\caption{Descripción del caso de uso: Cambiar controles}
 		\label{table: caso: cambiar_controles}
 	\end{table}
+	
+	%cambiar volumen
+	\begin{figure}[H]
+		\centering
+		\fbox{\includegraphics[width=.75\textwidth]{img/casos/cambiar_volumen.png}}
+		\caption{Caso de uso: Cambiar volumen}
+		\label{diagrama: caso: cambiar_volumen}
+	\end{figure}
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabularx}{\textwidth}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.3\textwidth}|}
+			\hline
+			\textbf{CASO DE USO} & \multicolumn{2}{|l|}{Cambiar volumen} \\ \hline
+			
+			\textbf{ACTOR} & \multicolumn{2}{|l|}{Jugador} \\ \hline
+			
+			\textbf{DESCRIPCIÓN} & \multicolumn{2}{|>{\raggedright\arraybackslash}X|}{Se configuran los volúmenes del juego} \\ \hline
+			
+			\textbf{PRECONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
+			
+			\textbf{FLUJO BÁSICO} & \multicolumn{1}{|c|}{\textbf{ACTOR}} & \multicolumn{1}{|c|}{\textbf{SISTEMA} } \\ \hline
+			&
+			1. Selecciona el menú de configuración. \newline
+			3. Selecciona el sub menú de volumen. \newline
+			5. Selecciona y desplaza la barra de volumen especifica. 
+			& 
+			2. Muestra configuración de audio y de controles. \newline
+			4. Muestra barras deslizables de volumen. \newline
+			6. Actualiza el volumen seleccionado. 
+			\\ \hline
+			
+			\textbf{POSTCONDICIÓN} & \multicolumn{2}{|l|}{Ninguna} \\ \hline
+		\end{tabularx}
+		\caption{Descripción del caso de uso: }
+		\label{table: caso: }
+	\end{table}
+	
+	%
 	
 	\clearpage
 	\begin{figure}[H]
