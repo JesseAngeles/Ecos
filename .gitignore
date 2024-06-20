@@ -2,5 +2,16 @@ reporte/document.aux
 reporte/document.log
 reporte/document.synctex.gz
 reporte/document.toc
-Ecos/
+Ecos/.plastic
+Ecos/.vscode
+Ecos/Library
+Ecos/Logs
+Ecos/Packages
+Ecos/ProjectSettings
+Ecos/Temp
+Ecos/UserSettings
+Ecos/Assembly-CSharp.csproj
+Ecos/Ecos.sln
+Ecos/ignore.conf
+
 
