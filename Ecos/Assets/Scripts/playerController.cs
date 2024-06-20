@@ -11,6 +11,7 @@ public class playerController : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool isGrounded;
+    private 
 
     // Start is called before the first frame update
     void Start()
