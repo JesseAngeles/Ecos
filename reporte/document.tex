@@ -1,5 +1,6 @@
 \documentclass[12pt,twoside]{article}
 \usepackage{amsmath}
+\usepackage[spanish]{babel}
 \usepackage[active]{srcltx}
 \usepackage{amssymb}
 \usepackage{amscd}
@@ -144,8 +145,16 @@
 	\clearpage
 	\section{Justificación}
 	
-	
-	
+	La Organización Mundial de la Salud (OMS) y la Organización Panamericana de la Salud (OPS) señalan que uno de cada siete menores de edad enfrenta alteraciones cognitivas, incluyendo trastornos como el TDAH, la ansiedad y la depresión. En el año 2021, el Instituto Nacional de Estadística y Geografía (INEGI) reportó más de ocho mil suicidios en menores de edad en México, con un alarmante 6.9\% de adolescentes que experimentaron pensamientos suicidas y un 6\% que intentó quitarse la vida \cite{info: justificacion1}.
+ 	
+ 	La naturaleza de muchos videojuegos requiere la intervención de sistemas inteligentes capaces de desafiar y confundir al jugador. Estos sistemas, como los NPC (Non Playable Characters), utilizan algoritmos de inteligencia artificial para cumplir su rol dentro del juego, a menudo limitados por flujos de comportamiento preestablecidos durante el diseño \cite{info: justificacion2}. 
+ 	
+ 	La implementación de videojuegos terapéuticos sigue siendo un campo de exploración amplio y prometedor. Estos juegos tienen el potencial de motivar a los pacientes, reducir el abandono del tratamiento y facilitar la práctica controlada. Sin embargo, también plantean riesgos como la adicción y la influencia en las expectativas de los usuarios \cite{info: justificacion3}.
+ 	
+	 El desarrollo de un videojuego que permita una comunicación más dinámica con los NPCs mediante el uso de procesamiento de lenguaje natural (NLP) es crucial. Este enfoque no solo mejorará la experiencia del jugador, sino que también proporcionará datos valiosos para especialistas terapéuticos al analizar la forma de comunicación del jugador de manera más auténtica y sin limitaciones predefinidas.
+	 
+	 No buscamos crear un juego terapéutico ni un diagnóstico virtual, sino explorar un nuevo enfoque en la implementación de algoritmos de NLP dentro de los videojuegos. Esto permitirá desarrollar herramientas que enriquezcan el repertorio de recursos disponibles para especialistas, abriendo nuevas posibilidades en el campo de la psicología clínica.
+ 	
 	\clearpage
 	\section{Objetivo general}
 	Desarrollar el prototipo de un videojuego \textit{rogue like} con generación de niveles procedurales e interacción jugador-NPC desde el teclado mediante análisis de texto, simulación de emociones y toma de decisiones.
@@ -160,7 +169,10 @@
 	\end{itemize}
 	
 	\clearpage
-	\section{Videojuego}
+	
+	\section{Marco teórico}
+	
+	\subsection{Videojuego}
 	
 	Keith Burgun define a un videojuego como un sistema de reglas donde los participantes compiten haciendo decisiones ambiciosas, ademas de que los contrincantes no necesariamente deben ser humanos \cite{info: videojuego1}.
 	
@@ -175,7 +187,7 @@
 		\item Cada derrota se considera una experiencia de aprendizaje \cite{info: videojuego2}.
 	\end{itemize}
 	
-	\section{Procesamiento del lenguaje natural}
+	\subsection{Procesamiento del lenguaje natural}
 	Dentro del proyecto, se desea que el personaje sea capaz de comunicarse con diferentes NPC con entrada desde teclado, donde el mensaje y el modo (sentimiento) afecten el flujo conversacional con dicho NPC. \\
 	
 	El procesamiento del lenguaje natural (PLN) es una rama de la inteligencia artificial que incluye técnicas, algoritmos y tecnologías que, mediante aprendizaje automático, busca estructurar y darle significado a los textos \cite{info: pln1}.
@@ -190,12 +202,12 @@
 		\item \textbf{Generación de lenguaje natural: } Transforma información estructurada en lenguaje comprensible para los humanos \cite{info: pln2}.
 	\end{itemize}
 	
-	\subsection{Detección de emociones}
+	\subsubsection{Detección de emociones}
 	El análisis de sentimiento utiliza diferentes técnicas, entre las cuales se incluye en análisis léxico y el aprendizaje automático.
 	
 	Esto permite evaluar la satisfacción del cliente, analizar opiniones publicas, predecir comportamientos del consumidor, mejorar la atención al cliente, análisis en redes sociales, chat bots y traducción automática con base en el contenido y la forma de los mensajes. \cite{info: pln3}.
 	
-	\subsection{Análisis léxico}
+	\subsubsection{Análisis léxico}
 	Se utiliza un diccionario de palabras con sus correspondientes atributos de sentimientos para asignar una puntuación a cada palabra en función de su carga emocional. Estas puntuaciones se suman y se utilizan para determinar el sentimiento general del texto \cite{info: pln3}.
 	
 	\begin{figure}[H]
@@ -213,22 +225,24 @@
 		\item Gestiona los errores y optimiza el código generado para obtener el código objetivo.
 	\end{itemize}
 	
-	\subsection{Aprendizaje automático}
+	\subsubsection{Aprendizaje automático}
 	El aprendizaje automático, o ML por sus siglas en ingles (Machine Learning), se centra en el desarrollo de sistemas que mejoran su rendimiento en función de los datos consumidos \cite{info: ml}. 
 	
 	Mediante modelos de aprendizaje automático, como clasificadores y redes neuronales, entrenados con datos etiquetados se puede reconocer patrones y asociarlo con fines emocionales \cite{info: pln3}.
 	
-	\section{Salud mental}
+	\subsection{Salud mental}
 	La salud mental es un estado de bienestar que permite a las personas enfrentarse a momentos de estres, desarrollar de habilidades, aprendizaje y trabajar de forma adecuada. 
 	
 	Esta determinada por múltiples factores como psicológicos, biológicos individuales, circunstancias sociales, económicas, políticas, ambientales, etc. Es por esto que se requieren de factores de protección que aumentan la resiliencia nutrida por interacciones sociales positivas, educación, trabajo decente, seguridad, etc. \cite{info: salud1}
 	
-	\subsection{Emociones}
+	\subsubsection{Emociones}
 	Las emociones son la manera natural en que los seres humanos reaccionan ante las situaciones de su entorno. Estas se presentan en diferentes intensidades a lo largo del día \cite{info: salud2}. 
 	
-	Las emociones pueden afectar la salud mental de formas positivas y negativas. Para tener buena salud mental es necesario equilibrar y controlar nuestras emociones \cite{info: salud3}. 
+	Las emociones pueden afectar la salud mental de formas positivas y negativas. Para tener buena salud mental es necesario equilibrar y controlar nuestras emociones. 
 	
-	\section{Tratamiento terapéutico psicológico}
+	El análisis de emociones puede ser mediante las acciones o su conversación, un experto en el área puede determinar como ciertas influencias ajenas e internas alteran las emociones y por ende, la salud mental \cite{info: salud3}.
+	
+	\subsection{Tratamiento terapéutico psicológico}
 	
 	La terapia es una rama de la medicina diseñada para tratar enfermedades, mejorar la salud de los pacientes, aliviar síntomas, mejorar funciones física o psicológicas y, en caso de ser posible, erradicar la afección. La terapia puede dividirse principalmente en dos grandes grupos: farmacológico y no farmacológico. El éxito o el fracaso de cualquier terapia se ve beneficiado por un análisis preciso, seguimiento de tratamiento y participación activa del paciente \cite{info: terapia1}. 
 	
@@ -993,18 +1007,14 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 
 	Con base en el genero del videojuego, se requiere de diferentes clases que complementen la funcionalidad lógica. Elementos como la cámara, `sprites', colisiones, sonidos, partículas, animaciones, cinemáticas, etc. pueden ser añadidas directo desde el IDE de Unity. Por esta razón, el diagrama de clases de la figura \ref{diagrama: clases} omite esos aspectos de construcción (constructores, `getters' y `setters' incluidos) y busca representar la estructura y relación entre clases.
 
-	
-	\clearpage
-	\subsection{Diagrama de secuencia}
-
-	\subsection{Diagrama de estados}
-
-	\subsection{Diagrama de actividades}
-
 	\clearpage
 	
 	\section{Prototipo}
 
+	\clearpage
+	
+	\section{Conclusiones}
+	
 	\clearpage
 	
 	\section{Referencias Bibliográficas}
@@ -1026,6 +1036,15 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 	
 	\bibitem{app: character}
 	Character Technologies, Inc. ``character.ai'', 2022. [En línea]. Disponible: \url{https://character.ai}. [Accedido: 11-Junio-2024].
+	
+	\bibitem{info: justificacion1}
+	Secretaria de salud, ``Depresión y ansiedad, principales problemas de salud mental en estos segmentos poblacionales'', Gobierno de México. [En línea]. Disponible: \url{https://www.gob.mx/salud/prensa/467-mas-de-50-de-trastornos-mentales-en-la-edad-adulta-iniciaron-en-la-ninez-y-la-adolescencia?idiom=es}. [Accedido: 23-Junio-2024].
+	
+	\bibitem{info: justificacion2}
+	Gonzáles Mario, ``Cómo se aplica la Inteligencia Artificial en los videojuegos'', Instituto de ingeniería del conocimiento. [En línea]. Disponible: \url{https://www.iic.uam.es/noticias/como-aplica-inteligencia-artificial-en-videojuegos/}. [Accedido: 23-junio-2024].
+	
+	\bibitem{info: justificacion3}
+	Hernández Cabezas Ariadna, ``Videojuegos como tratamiento terapéutico'', [En línea]. Disponible: \url{https://repositori.uji.es/xmlui/bitstream/handle/10234/191101/TFM_2020_HernandezCabezas_Ariadna.pdf?sequence=1&isAllowed=y} [Accedido: 23-junio-2024].
 	
 	\bibitem{info: videojuego1}
 	Salinaz Benito, ``UDLAP'', catarina. [En línea]. Disponible: \url{http://catarina.udlap.mx/u_dl_a/tales/documentos/lnd/benitez_salinas_ve/capitulo1.pdf}. [Accedido: 20-Junio-2024].
