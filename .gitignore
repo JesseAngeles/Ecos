@@ -13,5 +13,6 @@ Ecos/UserSettings
 Ecos/Assembly-CSharp.csproj
 Ecos/Ecos.sln
 Ecos/ignore.conf
+Server/node_modules
 
 
