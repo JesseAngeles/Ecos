@@ -5,7 +5,7 @@ import { LLMChain } from "langchain/chains";
 
 const chatModel = new ChatOpenAI({
     temperature: 0.2,
-    openAIApiKey: ''/*AÑADIR apli key*/,
+    openAIApiKey: '',
     modelName: 'gpt-3.5-turbo',
     maxTokens: 200
 });

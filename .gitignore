@@ -14,5 +14,8 @@ Ecos/Assembly-CSharp.csproj
 Ecos/Ecos.sln
 Ecos/ignore.conf
 Server/node_modules
-
+Client/bin
+Client/obj
+Client/Client.csproj
+Client/Client.sln
 

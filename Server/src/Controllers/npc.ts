@@ -2,14 +2,19 @@ import { Request, Response } from "express";
 import npcs from "../Models/npc";
 import { answer, answer2, answerTest, createPrompt } from "./gpt";
 
-// Se isnerta un nuevo NPC
+// Prueba de conexión
+export const connectionTest = async (req: Request, res: Response) => {
+    console.log("Prueba de conexión");
+    
+    return res.status(200).send("Successfuly connection");
+}
+
+// Se inserta un nuevo NPC
 export const addNpc = async (req: Request, res: Response) => {
     try {
-        const { name, mood, firstMessage } = req.body;
-
-        if (name && mood && firstMessage) {
-            const flow: Array<[boolean, string]> = [[true, firstMessage]];
-
+         const { name, mood, flow } = req.body;
+       
+        if (name && mood && flow) {
             const newNpc = new npcs({ name, mood, flow });
             const addNpc = await newNpc.save();
             const npcReturn = await npcs.findById(addNpc._id);
@@ -33,10 +38,29 @@ export const allNpc = async (req: Request, res: Response) => {
     }
 }
 
+// Obtiene la informacion de un solo NPC
+export const getNpc = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id;
+        if (id) {
+            const npc = await npcs.findById(id);
+            if (npc) {
+                return res.status(200).json(npc);
+            } else {
+                return res.status(404).send("Cant find register");
+            }
+        } else {
+            return res.status(400).send("Missing required fields");
+        }
+    } catch (error) {
+        
+    }
+}
+
 // Se agrega mensaje del jugador al flujo conversacional
 export const sendMessageNpc = async (req: Request, res: Response) => {
     try {
-        const id: string = req.body.id;
+        const id: string = req.params.id;
         const message: string = req.body.message;
         
         if (id && message) {
@@ -58,7 +82,8 @@ export const sendMessageNpc = async (req: Request, res: Response) => {
                 findNpc.flow = newFlow;
                 // Guarda el nuevo NPC
                 await findNpc.save(); 
-                return res.status(200).json(answerFlow); 
+                
+                return res.status(200).json(findNpc); 
             } else {
                 return res.status(404).send('NPC not found'); 
             }
