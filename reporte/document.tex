@@ -1,4 +1,5 @@
 \documentclass[12pt,twoside]{article}
+\usepackage[a4paper, margin=1in]{geometry}
 \usepackage{amsmath}
 \usepackage[spanish]{babel}
 \usepackage[active]{srcltx}
@@ -36,7 +37,7 @@
 \setlength{\evensidemargin}{1cm}
 \pagestyle{myheadings}
 \thispagestyle{empty}
-\markboth{\small{TMP(Nombre de equipo)}}{\small{Formulación del Proyecto}}
+\markboth{\small{Ecos Team}}{\small{Formulación del Proyecto}}
 \date{} 
 
 \begin{document}
@@ -102,7 +103,15 @@
 	
 	\clearpage
 	
+	% Redefine el título del índice al español
+	\renewcommand{\contentsname}{Indice}
+	% Guardar los márgenes originales
+	\newgeometry{left=1.5in , right=1.5in, bottom=.5in}
+	
 	\tableofcontents
+	
+	% Restaurar los márgenes originales
+	\restoregeometry
 		
 	\clearpage
 		
@@ -110,11 +119,11 @@
 	
 	Los videojuegos han trascendido su papel en las últimas décadas no solo en el campo del entretenimiento, sino también en áreas como la educación, la formación profesional y la salud mental. Las recientes tecnologías de inteligencia artificial han dado cabida a nuevas experiencias inmersivas y significativas para los jugadores. Sin embargo, muchas veces los niveles de comunicación están limitados a flujos conversacionales predefinidos y no procedurales, lo que representa un área de oportunidad para implementar procesamiento del lenguaje natural (NLP) y mejorar la comunicación con los sistemas inteligentes.
 	
-	La posibilidad de generar material para un especialista que busca conocer la interacción de un jugador y cómo este se comunica con las personas se incrementa con sistemas inteligentes y mayor libertad de comunicación. Aunque existe un vacío en la investigación de videojuegos terapéuticos, este proyecto no pretende realizar diagnósticos ni prediagnósticos. En cambio, busca desarrollar una experiencia inmersiva y personalizada para el jugador basada en sus interacciones con los personajes no jugables (NPCs) dentro del juego.
+	La posibilidad de generar material para un especialista que busca conocer la interacción de un jugador y cómo este se comunica con las personas se incrementa con sistemas inteligentes y mayor libertad de comunicación. Aunque existe un vacío en la investigación de videojuegos terapéuticos, este proyecto no pretende realizar diagnósticos ni prediagnósticos. En cambio, busca desarrollar una experiencia inmersiva y personalizada para el jugador con base en sus interacciones con los personajes no jugables (NPCs) dentro del juego.
 	
-	Este enfoque no solo mejorará la experiencia del jugador, sino que también enriquecerá el repertorio de recursos disponibles para los especialistas en psicología clínica, abriendo nuevas posibilidades para el análisis y apoyo a la salud mental de los jugadores.
+	Este enfoque no solo mejorará la experiencia del jugador, sino que también enriquecerá el repertorio de recursos disponibles para los psicólogos clínicos, abriendo nuevas posibilidades para el análisis y apoyo a la salud mental de los jugadores.
 	
-	A través de este proyecto, se espera demostrar cómo la tecnología de videojuegos y la inteligencia artificial pueden converger para ofrecer herramientas innovadoras y efectivas en el campo de la salud mental, proporcionando nuevos recursos que pueden ser utilizados por terapeutas y otros profesionales de la salud para mejorar la calidad de vida de los pacientes.
+	A través de este proyecto, se espera demostrar cómo la tecnología de videojuegos y la inteligencia artificial pueden converger para ofrecer nuevas herramientas innovadoras y efectivas en el campo de la salud mental, se busca proporcionar nuevos recursos que pueden ser utilizados por terapeutas y otros profesionales de la salud para mejorar la calidad de vida de los pacientes.
 	
 	Mediante experiencias entretenidas y únicas, se busca cautivar a los jugadores, ofreciéndoles no solo un entretenimiento de calidad, sino también un recurso potencialmente valioso para el ámbito terapéutico.
 	
@@ -1013,11 +1022,7 @@ Se opta por Unity sobre otras herramientas populares en el mercado como lo son G
 		\caption{Diagrama de clases}
 		\label{diagrama: clases}
 	\end{figure}
-
-	\clearpage
 	
-	\section{Prototipo}
-
 	\clearpage
 	
 	\section{Conclusiones}
