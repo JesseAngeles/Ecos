@@ -14,6 +14,8 @@ Ecos/Assembly-CSharp.csproj
 Ecos/Ecos.sln
 Ecos/ignore.conf
 Server/node_modules
+Server/src/Resources/data_train.csv
+Server/src/Resources/dataset.csv
 Client/bin
 Client/obj
 Client/Client.csproj
