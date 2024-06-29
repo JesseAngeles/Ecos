@@ -1,55 +1,38 @@
-/* Estilos generales */
+/* styles.css */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #f2f2f2;
 }
 
 .container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    max-width: 1000px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: white;
 }
 
-/* Estilos para la lista de NPCs */
 .npc-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+    width: 30%;
     border-right: 1px solid #ccc;
-    overflow-y: auto;
-    height: calc(100vh - 140px); /* Ajustar según el diseño */
-    max-height: 500px; /* Máxima altura permitida */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .npc-item {
-    padding: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
 }
 
-.npc-item:hover {
-    background-color: #f0f0f0;
-}
-
-.selected {
-    background-color: #007bff;
-    color: #fff;
-}
-
-/* Estilos para la ventana de conversación */
 .chat-window {
     flex: 1;
     padding: 20px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
@@ -57,92 +40,107 @@ body {
 .conversation {
     flex: 1;
     overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .message {
-    margin-bottom: 10px;
     padding: 10px;
-    border-radius: 6px;
-    max-width: 70%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    max-width: 80%;
 }
 
 .outgoing {
-    align-self: flex-end;
     background-color: #007bff;
-    color: #fff;
+    color: white;
+    align-self: flex-end;
 }
 
 .incoming {
+    background-color: #f2f2f2;
     align-self: flex-start;
-    background-color: #f0f0f0;
 }
 
-/* Estilos para el formulario de mensajes */
 #message-form {
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #message {
     flex: 1;
     padding: 10px;
-    margin-right: 10px;
+    font-size: 16px;
 }
 
-#message:focus {
-    outline: none;
-    border-color: #007bff;
-}
-
-button[type="submit"] {
+button {
     padding: 10px 20px;
-    border: none;
     background-color: #007bff;
-    color: #fff;
+    color: white;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
 
-button[type="submit"]:hover {
+button:hover {
     background-color: #0056b3;
 }
 
-/* Estilos para los botones de NPC */
-.npc-buttons {
-    margin-top: 20px;
+/* Estilos para el contenedor de NPCs y botones */
+.npc-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 500px;
+    max-width: 500px; /* Ajusta el ancho máximo según tu diseño */
 }
 
-.npc-buttons button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: #fff;
+/* Estilos para la lista de NPCs */
+.npc-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 200px; /* Ajusta la altura máxima según tu diseño */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.npc-list li {
     cursor: pointer;
+    padding: 8px;
     transition: background-color 0.3s ease;
+}
+
+.npc-list li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilos para los botones */
+.npc-buttons {
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección del flujo a columna */
+    justify-content: space-between;
+    margin-top: 10px; /* Espacio superior entre los botones */
+}
+
+
+.npc-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
 }
 
 .npc-buttons button:hover {
     background-color: #0056b3;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch; /* Ajusta la alineación vertical si es necesario */
-}
-
-.npc-container {
-    width: 30%; /* Ajusta el ancho según tus necesidades */
-    min-width: 250px; /* Ancho mínimo para evitar que se colapse */
-    border-right: 1px solid #ccc;
-    padding-right: 20px;
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
-    overflow-y: auto; /* Permite desplazamiento vertical si hay muchos NPCs */
-}
-
-.chat-window {
-    flex: 1;
-    padding: 20px;
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
