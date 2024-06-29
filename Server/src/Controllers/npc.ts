@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import npcs from "../Models/npc";
 import { answer3 } from "./gpt";
-import { loadModelFromCSV, naives, predict, readCSV, saveModelToCSV } from "./feeling";
+import { loadModelFromCSV, naives, predict, readCSV, readCSV_test, saveModelToCSV, testModel } from "./feeling";
 
 // Prueba de conexión
 export const createModel = async (req: Request, res: Response) => {
@@ -18,10 +18,10 @@ export const test = async (req: Request, res: Response) => {
     const sentence = req.body.sentence;
 
     if (sentence) {
-        const model = loadModelFromCSV();
-        const prediction = predict(sentence, model);
+        
+        const results = testModel();
 
-        return res.status(200).json(prediction);
+        return res.status(200).json(results);
     } else {
         return res.status(409).send('Conflict: Missing required fields');
     }
@@ -116,7 +116,7 @@ export const sendMessageNpc = async (req: Request, res: Response) => {
 
                 var params: string = "";
                 for (const [key, value] of Object.entries(classes)) {
-                    params += `${key}% de ${value.toFixed(2)}.\n`;
+                    params += `${key}% de ${value}.\n`;
                 }
 
                 console.log(params);
@@ -148,3 +148,4 @@ export const sendMessageNpc = async (req: Request, res: Response) => {
         return res.status(500).send('Internal Server Error');
     }
 }
+

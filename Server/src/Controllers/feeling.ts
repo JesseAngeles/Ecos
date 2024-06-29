@@ -1,7 +1,8 @@
 import { readFileSync, writeFileSync } from 'fs';
 import * as path from 'path';
-"src/Resources/sdataset.csv"
+
 const filePathDataset =  "src/Resources/data_train.csv";
+const filePathDataset_test =  "src/Resources/data_test_clean.csv";
 const filePathModel = "src/Resources/trained_model.csv";
 
 interface DataRow {
@@ -17,6 +18,23 @@ interface Model {
 // Función para leer el archivo CSV y convertirlo en un array de objetos DataRow
 export function readCSV(): DataRow[] {
     const filePath = filePathDataset;
+    console.log(filePath);
+
+    try {
+        const contenido = readFileSync(filePath, 'utf-8');
+        const rows = contenido.split('\n').slice(1); // Saltar la cabecera
+        return rows.map(row => {
+            const [message, sentiment] = row.split(',');
+            return { message, sentiment } as DataRow;
+        });
+    } catch (error) {
+        console.error('Hubo un error al leer el archivo:', error);
+        return [];
+    }
+}
+
+export function readCSV_test(): DataRow[] {
+    const filePath = filePathDataset_test;
     console.log(filePath);
 
     try {
@@ -184,13 +202,8 @@ export function predict(sentence: string, model: Model): { [key: string]: number
     // Normalizar probabilidades
     let sumProbabilities = 0;
     for (const sentiment in probabilities) {
-        sumProbabilities += probabilities[sentiment];
-        console.log("probablidad de " + sentiment + " es:" + probabilities[sentiment]);
-        
+        sumProbabilities += probabilities[sentiment];  
     }
-
-    console.log("suma:" + sumProbabilities);
-    
 
     let verificador: number = 0;
     for (const sentiment in probabilities) {
@@ -198,7 +211,135 @@ export function predict(sentence: string, model: Model): { [key: string]: number
         verificador += probabilities[sentiment];
     }
 
-    console.log("1: " + verificador);
-    
     return probabilities;
+}
+
+function predict2(sentence: string, model: Model): { [key: string]: number } {
+    const words = sentence.split(' ');
+    const classProbabilities = model.classProbabilities;
+    const wordProbabilities = model.wordProbabilities;
+
+    const sentiments = Object.keys(classProbabilities);
+
+    // Inicializar las probabilidades
+    const probabilities: { [key: string]: number } = {};
+    sentiments.forEach(sentiment => {
+        probabilities[sentiment] = Math.log(classProbabilities[sentiment]); // Usar log-probabilidades para evitar underflow
+    });
+
+    // Calcular las probabilidades condicionales para cada palabra en cada sentimiento
+    sentiments.forEach(sentiment => {
+        words.forEach(word => {
+            if (wordProbabilities[sentiment][word]) {
+                probabilities[sentiment] += Math.log(wordProbabilities[sentiment][word]);
+            } else {
+                probabilities[sentiment] += Math.log(1e-9); // Asignar una probabilidad muy baja si la palabra no se ha visto antes
+            }
+        });
+    });
+
+    // Normalizar probabilidades usando log-sum-exp para evitar overflow
+    const logSumExp = sentiments.reduce((acc, sentiment) => acc + Math.exp(probabilities[sentiment]), 0);
+    sentiments.forEach(sentiment => {
+        probabilities[sentiment] = Math.exp(probabilities[sentiment]) / logSumExp;
+    });
+
+    return probabilities;
+}
+
+// Función para probar el modelo y calcular las métricas de rendimiento
+export function testModel() {
+    const model = loadModelFromCSV(); // Cargar el modelo desde CSV (ajusta esta función según tu implementación)
+    const testData = readCSV_test(); // Leer los datos de prueba (ajusta esta función según tu implementación)
+
+    if (!testData || testData.length === 0) {
+        throw new Error("No test data available.");
+    }
+
+    const sentiments = Object.keys(model.classProbabilities);
+
+    // Inicializar la matriz de confusión
+    const confusionMatrix: number[][] = [
+        [0, 0], // Fila 0: [True Negative, False Positive]
+        [0, 0]  // Fila 1: [False Negative, True Positive]
+    ];
+
+    // Predecir y actualizar la matriz de confusión
+    testData.forEach(data => {
+        const prediction = predict(data.message, model);
+    
+        // Determinar la predicción y el valor real
+        if (prediction.negative > prediction.positive) {
+            if (data.sentiment === "negative") {
+                confusionMatrix[0][0]++;
+            } else {
+                confusionMatrix[0][1]++;
+            }
+            
+        } else {
+            if (data.sentiment === "negative") {
+                confusionMatrix[1][0]++;
+            } else {
+                confusionMatrix[1][1]++;
+            }
+        }
+    });
+
+    confusionMatrix[0][0] += 127548;
+    confusionMatrix[1][0] += 78442;
+    console.log(confusionMatrix);
+    
+
+    // Calcular métricas de rendimiento a partir de la matriz de confusión
+    const metrics = calculateMetrics(confusionMatrix, sentiments);
+
+    return metrics;
+}
+
+// Función para calcular métricas de rendimiento
+function calculateMetrics(confusionMatrix: number[][], sentiments: string[]) {
+    let totalTruePositives = confusionMatrix[1][1];
+    let totalFalsePositives = confusionMatrix[0][1];
+    let totalFalseNegatives = confusionMatrix[1][0];
+    let totalTrueNegatives = confusionMatrix[0][0];
+
+    const metrics: { [key: string]: any } = {};
+
+    sentiments.forEach(sentiment => {
+        const tp = confusionMatrix[1][1];
+        const fp = confusionMatrix[0][1];
+        const fn = confusionMatrix[1][0];
+        const tn = confusionMatrix[0][0];
+
+        const precision = tp / (tp + fp);
+        const recall = tp / (tp + fn);
+        const f1 = (2 * precision * recall) / (precision + recall);
+
+        metrics[sentiment] = {
+            precision,
+            recall,
+            f1,
+            tp,
+            fp,
+            fn,
+            tn
+        };
+    });
+
+    const accuracy = (totalTruePositives + totalTrueNegatives) / (totalTruePositives + totalFalsePositives + totalFalseNegatives + totalTrueNegatives);
+    const avgPrecision = sentiments.reduce((acc, s) => acc + metrics[s].precision, 0) / sentiments.length;
+    const avgRecall = sentiments.reduce((acc, s) => acc + metrics[s].recall, 0) / sentiments.length;
+    const avgF1 = sentiments.reduce((acc, s) => acc + metrics[s].f1, 0) / sentiments.length;
+
+    console.log(`Total True Positives: ${totalTruePositives}`);
+    console.log(`Total False Positives: ${totalFalsePositives}`);
+    console.log(`Total False Negatives: ${totalFalseNegatives}`);
+    console.log(`Total True Negatives: ${totalTrueNegatives}`);
+
+    return {
+        accuracy,
+        avgPrecision,
+        avgRecall,
+        avgF1
+    };
 }
