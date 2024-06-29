@@ -34,7 +34,7 @@ export async function answer(question: string): Promise<string> {
         return quest.text;
     } catch (error) {
         console.error("Error al procesar la pregunta:", error);
-        throw error; 
+        throw error;
     }
 };
 
@@ -47,12 +47,50 @@ export async function answer2(name: string, flow: Array<[boolean, string]>, mess
         return quest.text;
     } catch (error) {
         console.error("Error al procesar la pregunta:", error);
-        throw error; 
+        throw error;
     }
 };
 
+export async function answer3(name: string, flow: Array<[boolean, string]>,
+    message: string, params: string, context: string): Promise<string> {
+    try {
+        const question: string = createPrompt2(name, flow, message, params, context);
+        const quest = await chatConversationChain.invoke({ question });
+        return quest.text;
+    } catch (error) {
+        console.error("Error al procesar la pregunta:", error);
+        throw error;
+    }
+}
 
-export function createPrompt(name: string, flow: Array<[boolean, string]>, messagePlayer: string):String {
+function createPrompt2(name: string, flow: Array<[boolean, string]>,
+    messagePlayer: string, params: string, context: string): string {
+
+    const playerName: string = "Valentine";
+
+    let prompt = `Your name is ${name}. Your personal context is ${context}.
+    you are in a theater scene. The script is the next:\n`;
+
+    for (const message of flow) {
+        if (message[0]) {
+            prompt += `${name}: ${message[1]}.\n`;
+        } else {
+            prompt += `${playerName}: ${message[1]}.\n`;
+        }
+    }
+
+    prompt += `${playerName}: ${messagePlayer}.\n`;
+    prompt += `The last message given by ${playerName} is: ${params}\n`;
+    prompt += `Be creative. 
+        Follow the conversation. 
+        Write only the message. 
+        Message under 25 words. 
+        Dont write "${name}:"`;
+
+    return prompt;
+}
+
+function createPrompt(name: string, flow: Array<[boolean, string]>, messagePlayer: string): String {
     var prompt: String = new String;
 
     const playerName: string = "Valentine";
@@ -61,7 +99,7 @@ export function createPrompt(name: string, flow: Array<[boolean, string]>, messa
         "Estas en juego de rol, tu papel es el siguiente:" +
         "Eres un aldeano que se encuentra en una mina" +
         "buscando minerales. Tu nombre es " + name +
-        "y eres una persona muy gruñona. Tu historial de " + 
+        "y eres una persona muy gruñona. Tu historial de " +
         "conversación con " + playerName + "es el siguiente:";
 
     prompt += startingMessage;
@@ -76,7 +114,7 @@ export function createPrompt(name: string, flow: Array<[boolean, string]>, messa
     }
     prompt += playerName + ":" + messagePlayer + ".\n";
 
-    prompt += "Necesito que continues la conversación." + 
+    prompt += "Necesito que continues la conversación." +
         "Que tu mensaje sea corto y menor a 25 palabras";
 
     return prompt;

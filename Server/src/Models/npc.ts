@@ -16,6 +16,10 @@ const NpcSchema = new Schema<Npc & Document>({
         type: Number,
         required: true
     },
+    context: {
+        type: String,
+        required: true
+    },
     flow: {
         type: [FlowSchema],
         required: true
