@@ -7,25 +7,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="npc-container">
-            <ul id="npc-list" class="npc-list">
-                <!-- Aquí se mostrará la lista de NPCs dinámicamente -->
+    <header>
+        <div class="logo">Juego de Chat con NPCs</div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">NPCs</a></li>
+                <li><a href="#">Acerca de</a></li>
             </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="npc-section">
+            <h2>Presentación de NPCs</h2>
+            <div class="npc-cards" id="npc-list">
+                <!-- Aquí se mostrarán las tarjetas de los NPCs -->
+            </div>
             <div class="npc-buttons">
                 <button id="add-npc">Agregar NPC</button>
             </div>
-        </div>        
-        <div class="chat-window">
-            <!-- Aquí se mostrará la conversación actual -->
-            <div class="conversation" id="conversation">
+        </section>
+        <section class="chat-section">
+            <div class="chat-window" id="chat-window">
+                <div class="conversation" id="conversation"></div>
+                <form id="message-form">
+                    <input type="text" id="message" placeholder="Escribe tu mensaje...">
+                    <button type="submit">Enviar</button>
+                </form>
             </div>
-            <form id="message-form">
-                <input type="text" id="message" placeholder="Escribe tu mensaje...">
-                <button type="submit" id="message-form">Enviar</button>
-            </form>
-        </div>
-    </div>
+            <aside class="sidebar">
+                <h3>NPCs seleccionados</h3>
+                <ul id="selected-npc-list">
+                    <!-- Lista de NPCs seleccionados -->
+                </ul>
+                <button id="reset">Reiniciar</button>
+            </aside>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Juego de Chat con NPCs. Todos los derechos reservados.</p>
+        <p>Desarrollado por [THANPAO]</p>
+        <p>Contacto: <a href="mailto:tuemail@example.com">tuemail@example.com</a></p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
