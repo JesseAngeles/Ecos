@@ -1,146 +1,331 @@
-/* styles.css */
+/* General */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'VT323', monospace;
+    color: #ffffff;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #1b1b2f;
+    position: relative;
+    overflow-y: scroll; /* Permitir desplazamiento vertical */
+    height: 100%;
 }
 
-.container {
-    display: flex;
-    max-width: 1000px;
-    margin: 20px auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-    background-color: white;
+html {
+    height: 100%;
+    overflow-y: scroll; /* Permitir desplazamiento vertical */
 }
 
-.npc-list {
-    width: 30%;
-    border-right: 1px solid #ccc;
-    padding: 20px;
-    box-sizing: border-box;
+/* Fondo con efecto blur */
+body::before {
+    content: "";
+    position: fixed; /* Fijo para que no se desplace con el contenido */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://i.pinimg.com/564x/83/8a/03/838a0371489c395e5499cd1a7fe7c2a5.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(4px);
+    z-index: -1;
 }
 
-.npc-item {
-    cursor: pointer;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+header {
+    background-color: rgba(45, 45, 68, 0.9);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 2rem;
 }
 
-.chat-window {
-    flex: 1;
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+header .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
-.conversation {
-    flex: 1;
-    overflow-y: auto;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.message {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    max-width: 80%;
-}
-
-.outgoing {
-    background-color: #007bff;
-    color: white;
-    align-self: flex-end;
-}
-
-.incoming {
-    background-color: #f2f2f2;
-    align-self: flex-start;
-}
-
-#message-form {
-    display: flex;
-    margin-top: 10px;
-}
-
-#message {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Estilos para el contenedor de NPCs y botones */
-.npc-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    width: 500px;
-    max-width: 500px; /* Ajusta el ancho máximo según tu diseño */
-}
-
-/* Estilos para la lista de NPCs */
-.npc-list {
+header nav ul {
     list-style-type: none;
-    padding: 0;
     margin: 0;
-    overflow-y: auto;
-    max-height: 200px; /* Ajusta la altura máxima según tu diseño */
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.npc-list li {
-    cursor: pointer;
-    padding: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.npc-list li:hover {
-    background-color: #f0f0f0;
-}
-
-/* Estilos para los botones */
-.npc-buttons {
+    padding: 0;
     display: flex;
-    flex-direction: column; /* Cambiar la dirección del flujo a columna */
-    justify-content: space-between;
-    margin-top: 10px; /* Espacio superior entre los botones */
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 2px solid #2d2d44;
+    border-radius: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+    background-color: rgba(93, 93, 129, 0.8);
+}
+
+header nav ul li a:hover {
+    background-color: #5d5d81;
+    border-color: #5d5d81;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.npc-section, .chat-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 1rem 0;
+    background-color: rgba(34, 34, 59, 0.8);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.npc-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #00bfa6;
+    text-shadow: 2px 2px #2d2d44;
+}
+
+.npc-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.npc-card {
+    background-color: #22223b;
+    border: 2px solid #5d5d81;
+    border-radius: 8px;
+    margin: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.npc-card:hover {
+    transform: scale(1.05);
+    background-color: #2d2d44;
+}
+
+.npc-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #00bfa6;
+}
+
+.npc-card h3 {
+    color: #00bfa6;
+    margin-top: 0.5rem;
+}
+
+.npc-card p {
+    color: #8bd2b7;
+}
+
+.npc-card button {
+    background-color: #5d5d81;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.npc-card button:hover {
+    background-color: #2d2d44;
+}
+
+.npc-buttons {
+    text-align: center;
+    margin-top: 1rem;
+}
 
 .npc-buttons button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff;
+    background-color: #00bfa6;
+    border: 2px solid #00bfa6;
     color: white;
-    font-size: 14px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
 .npc-buttons button:hover {
-    background-color: #0056b3;
+    background-color: #2d2d44;
+    border-color: #2d2d44;
 }
+
+.chat-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 2rem;
+}
+
+.chat-window {
+    background-color: #22223b;
+    border: 2px solid #5d5d81;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 60%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.chat-window .conversation {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 2px solid #5d5d81;
+    border-radius: 8px;
+    background-color: #1b1b2f;
+}
+
+.chat-window form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-window input[type="text"] {
+    width: 80%;
+    padding: 0.5rem;
+    border: 2px solid #00bfa6;
+    border-radius: 4px;
+    background-color: #1b1b2f;
+    color: white;
+}
+
+.chat-window button {
+    background-color: #5d5d81;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.chat-window button:hover {
+    background-color: #2d2d44;
+}
+
+.sidebar {
+    background-color: #22223b;
+    border: 2px solid #5d5d81;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    color: #00bfa6;
+    text-shadow: 2px 2px #2d2d44;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    background-color: #2d2d44;
+    border: 2px solid #5d5d81;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    text-align: center;
+    color: white;
+}
+
+.sidebar button {
+    background-color: #e53935;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+    background-color: #b71c1c;
+}
+
+footer {
+    background-color: rgba(45, 45, 68, 0.9);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    margin-top: 2rem;
+    font-family: 'VT323', monospace; /* Aplica la fuente pixel art */
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+footer a {
+    color: #00bfa6;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #8bd2b7;
+}
+
+/* Estilos para la barra de scroll */
+::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de scroll */
+    background-color: #1b1b2f; /* Color de fondo de la barra de scroll */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #5d5d81; /* Color del pulgar (scrollbar handle) */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #2d2d44; /* Color del pulgar al pasar el mouse */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #1b1b2f; /* Color de fondo de la pista (track) */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #1b1b2f; /* Color de la esquina */
+}
+
+
+/* Font for pixel art style */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
