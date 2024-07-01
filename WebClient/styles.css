@@ -15,6 +15,23 @@ html {
     overflow-y: scroll; /* Permitir desplazamiento vertical */
 }
 
+/* Estilos generales para todos los mensajes */
+.message {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    max-width: 80%;
+    font-size: 14px;
+}
+
+/* Estilos específicos para los mensajes entrantes */
+.incoming {
+    background-color: #333;
+    color: #F1F1F1; 
+    align-self: flex-start; 
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1); 
+}
+
 /* Fondo con efecto blur */
 body::before {
     content: "";
